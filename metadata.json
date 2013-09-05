@@ -1,0 +1,13 @@
+{
+  "name": "danleyden-ganglia",
+  "version": "0.0.2",
+  "summary": "A module to install the ganglia server",
+  "author": "Dan Leyden",
+  "description": "supports installation of various parts of ganglia",
+  "dependencies": [],
+  "types": [],
+  "checksums": {},
+  "source": "https://github.com/danleyden/puppet-ganglia.git",
+  "project_page": "https://github.com/danleyden/puppet-ganglia",
+  "license": "Apache 2.0"
+}
