@@ -1,10 +1,17 @@
-ganglia puppet module
+This module is based on https://forge.puppetlabs.com/danleyden/ganglia . I added params.pp and changed some default value. It is hiera comapatiable.
 
-Author: Daniel Leyden
+include ganglia::client
 
-Contributor: Jean-Daniel BUSSY
-Contributor: K Jonathan "Jesusaurus" Harker
-Contributor: Andy Shinn
+Hiera data
+
+ganglia::params::unicast_targets:
+- ipaddress : ganglia_server
+  port      : 8649
+
+
+Limitation : server configuration is not tested 
+
+
 
 Supports the installation of ganglia using puppet with multiclusters like described here:
 
