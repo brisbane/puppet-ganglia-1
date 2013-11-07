@@ -73,7 +73,6 @@ class ganglia::client inherits ganglia::params {
   $network_mode = $ganglia::params::network_mode
   $user = $ganglia::params::user
    
-
   case $::osfamily {
     'Debian': {
       $ganglia_client_pkg     = 'ganglia-monitor'
@@ -106,6 +105,7 @@ class ganglia::client inherits ganglia::params {
     alias   => 'ganglia_client',
     require => Package[$ganglia_client_pkg];
   }
+  
 
   file {'/etc/ganglia/gmond.conf':
     ensure  => present,
