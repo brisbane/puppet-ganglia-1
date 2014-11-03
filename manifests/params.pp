@@ -9,7 +9,7 @@ class ganglia::params (
   $unicast_targets = [],
   $network_mode ='unicast',
   $user = 'ganglia',
-  
+  $rungmetad = false,  
 )
 {
   

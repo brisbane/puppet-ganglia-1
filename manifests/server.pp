@@ -25,7 +25,7 @@ class ganglia::server (
 
   include ganglia::client
 
-  $ganglia_server_pkg = 'gmetad'
+  $ganglia_server_pkg = 'ganglia-gmetad'
 
   package {$ganglia_server_pkg:
     ensure => present,
@@ -36,11 +36,13 @@ class ganglia::server (
     require => Package[$ganglia_server_pkg];
   }
 
+if str2bool( $rungmetad )
+ {
   file {'/etc/ganglia/gmetad.conf':
     ensure  => present,
     require => Package['ganglia_server'],
     notify  => Service[$ganglia_server_pkg],
     content => template('ganglia/gmetad.conf');
   }
-
+ }
 }
