@@ -101,6 +101,7 @@ class ganglia::client inherits ganglia::params {
   }
 
   service {$ganglia_client_service:
+    enable  => true,
     ensure  => 'running',
     alias   => 'ganglia_client',
     require => Package[$ganglia_client_pkg];
