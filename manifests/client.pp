@@ -100,18 +100,18 @@ class ganglia::client inherits ganglia::params {
     alias  => 'ganglia_client',
   }
 
-  service {$ganglia_client_service:
-    enable  => true,
-    ensure  => 'running',
-    alias   => 'ganglia_client',
-    require => Package[$ganglia_client_pkg];
-  }
-  
-
   file {'/etc/ganglia/gmond.conf':
     ensure  => present,
     require => Package['ganglia_client'],
     content => template('ganglia/gmond.conf'),
     notify  => Service[$ganglia_client_service];
   }
+
+  service {$ganglia_client_service:
+    enable  => true,
+    ensure  => 'running',
+    alias   => 'ganglia_client',
+    require =>  [Package[$ganglia_client_pkg], File['/etc/ganglia/gmond.conf'] ];
+  }
+  
 }
