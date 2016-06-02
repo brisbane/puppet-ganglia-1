@@ -1,5 +1,5 @@
 <VirtualHost *:80>
 ServerName <%= @hostname %>
-ServerAlias /ganglia
+Alias /ganglia /usr/share/ganglia-webfrontend
 DocumentRoot /usr/share/ganglia-webfrontend
 </VirtualHost>

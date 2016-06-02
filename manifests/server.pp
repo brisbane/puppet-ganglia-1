@@ -19,12 +19,14 @@
 #   include ganglia::server
 #
 class ganglia::server (
-  $clusters = [{cluster_name => 'my_cluster', cluster_hosts => [{address => 'localhost', port => '8649'}]}],
-  $gridname = '',
-  ) {
+#  $clusters = [{cluster_name => 'my_cluster', cluster_hosts => [{address => 'localhost', port => '8649'}]}],
+  $clusters = hiera_array('ganglia::server::clusters', [{cluster_name => 'my_cluster', cluster_hosts => [{address => 'localhost', port => '8649'}]}]),
+  $gridname = '', ) 
+  inherits ganglia::params 
+  {
 
   include ganglia::client
-
+#  notify{$clusters:}
   $ganglia_server_pkg = 'ganglia-gmetad'
 
   package {$ganglia_server_pkg:

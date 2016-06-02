@@ -23,13 +23,28 @@ ${::operatingsystem}")
     ensure => present,
     alias  => 'ganglia_webserver',
   }
-  file {'/etc/apache2/sites-enabled/ganglia':
+
+  $gangliaconffile = $::osfamily ? {
+    Debian => '/etc/apache2/sites-enabled/ganglia',
+    RedHat => '/etc/httpd/conf.d/ganglia.conf'
+  }
+ 
+  if $::osfamily == Debian { 
+  file {"/etc/apache2/sites-enabled/ganglia":
     ensure  => link,
     target  => '/etc/apache2/sites-available/ganglia',
     require => File['/etc/apache2/sites-available/ganglia'],
   }
+  }
+  if $::osfamily == Redhat {
+  file {"/usr/share/ganglia-webfrontend":
+    ensure  => link,
+    target  => '/usr/share/ganglia',
+    require => Package[$ganglia_webserver_pkg],
+  }
+  }
 
-  file {'/etc/apache2/sites-available/ganglia':
+  file {"$gangliaconffile":
     ensure  => present,
     require => Package['ganglia_webserver'],
     content => template('ganglia/ganglia');
