@@ -21,7 +21,8 @@
 class ganglia::server (
 #  $clusters = [{cluster_name => 'my_cluster', cluster_hosts => [{address => 'localhost', port => '8649'}]}],
   $clusters = hiera_array('ganglia::server::clusters', [{cluster_name => 'my_cluster', cluster_hosts => [{address => 'localhost', port => '8649'}]}]),
-  $gridname = '', ) 
+  $gridname = '', 
+  $gmetaduser = $ganglia::params::gmetaduser) 
   inherits ganglia::params 
   {
 
