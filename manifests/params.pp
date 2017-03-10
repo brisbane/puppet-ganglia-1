@@ -7,8 +7,8 @@ class ganglia::params (
   $udp_port                 = '8649',
   $unicast_listen_port      = '8649',
   $unicast_targets          = [],
-  $network_mode             = 'unicast',
   $user                     = 'ganglia',
+  $network_mode             = 'unicast',
   $gmetaduser               = 'nobody',
   $rungmetad                = false,  
   $gridname                 = ""
