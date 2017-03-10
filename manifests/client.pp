@@ -62,16 +62,16 @@
 #   }
 #
 class ganglia::client inherits ganglia::params { 
-  $ensure = $ganglia::params::ensure
-  $cluster=$ganglia::params::cluster
-  $multicast_address = $ganglia::params::multicast_address
-  $owner=$ganglia::params::owner
-  $send_metadata_interval = $ganglia::params::send_metadata_interval
-  $udp_port = $ganglia::params::udp_port
-  $unicast_listen_port = $ganglia::params::unicast_listen_port
-  $unicast_targets = $ganglia::params::unicast_targets
-  $network_mode = $ganglia::params::network_mode
-  $user = $ganglia::params::user
+  $ensure                  = $ganglia::params::ensure
+  $cluster                 = $ganglia::params::cluster
+  $multicast_address       = $ganglia::params::multicast_address
+  $owner                   = $ganglia::params::owner
+  $send_metadata_interval  = $ganglia::params::send_metadata_interval
+  $udp_port                = $ganglia::params::udp_port
+  $unicast_listen_port     = $ganglia::params::unicast_listen_port
+  $unicast_targets         = $ganglia::params::unicast_targets
+  $network_mode            = $ganglia::params::network_mode
+  $user                    = $ganglia::params::user
    
   case $::osfamily {
     'Debian': {
